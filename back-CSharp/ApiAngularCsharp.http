@@ -1,0 +1,6 @@
+@ApiAngularCsharp_HostAddress = http://localhost:5096
+
+GET {{ApiAngularCsharp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

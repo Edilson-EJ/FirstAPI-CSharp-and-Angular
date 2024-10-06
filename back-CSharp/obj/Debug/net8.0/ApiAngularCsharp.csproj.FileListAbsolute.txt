@@ -1,0 +1,67 @@
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\appsettings.json
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\ApiAngularCsharp.exe
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\ApiAngularCsharp.deps.json
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\ApiAngularCsharp.runtimeconfig.json
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\ApiAngularCsharp.pdb
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.csproj.AssemblyReference.cache
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.AssemblyInfoInputs.cache
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.AssemblyInfo.cs
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.csproj.CoreCompileInputs.cache
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\staticwebassets\msbuild.ApiAngularCsharp.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\staticwebassets\msbuild.build.ApiAngularCsharp.props
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ApiAngularCsharp.props
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ApiAngularCsharp.props
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\scopedcss\bundle\ApiAngularCsharp.styles.css
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngul.96BA1BC8.Up2Date
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\refint\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.pdb
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ApiAngularCsharp.genruntimeconfig.cache
+C:\Users\edils\Desktop\Edilson\CSHARP E ANGULAR\ApiAngularCsharp\obj\Debug\net8.0\ref\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\appsettings.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\ApiAngularCsharp.exe
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\ApiAngularCsharp.deps.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\ApiAngularCsharp.runtimeconfig.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\ApiAngularCsharp.pdb
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.csproj.AssemblyReference.cache
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.AssemblyInfoInputs.cache
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.AssemblyInfo.cs
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.csproj.CoreCompileInputs.cache
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.sourcelink.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\staticwebassets\msbuild.ApiAngularCsharp.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\staticwebassets\msbuild.build.ApiAngularCsharp.props
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ApiAngularCsharp.props
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ApiAngularCsharp.props
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\scopedcss\bundle\ApiAngularCsharp.styles.css
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngul.96BA1BC8.Up2Date
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\refint\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.pdb
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.genruntimeconfig.cache
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ref\ApiAngularCsharp.dll
