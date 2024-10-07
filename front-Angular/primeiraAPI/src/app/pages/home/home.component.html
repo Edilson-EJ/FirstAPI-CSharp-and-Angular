@@ -1,0 +1,62 @@
+<h1>Buscar Pessoa</h1>
+<div>
+  <app-input-field label="Buscar Pessoa" placeholder="Digite o ID ou nome da pessoa e pressione Enter" type="search"
+    [(value)]="valueForPerson" (keyup.enter)="getSpecificPerson()">
+  </app-input-field>
+  <button (click)="getSpecificPerson()">Buscar</button>
+</div>
+
+<app-notification #notificationPopup></app-notification>
+
+<div *ngIf="searchForPerson$ | async as person; else noPersonFound">
+  <h2>Resultado da Busca:</h2>
+  <div class="pessoa-info">
+    <h2>{{ person.name }}</h2>
+    <p>Id: {{ person.id }}</p>
+  </div>
+</div>
+
+<ng-template #noPersonFound>
+  <p>Nenhuma pessoa encontrada.</p>
+</ng-template>
+
+<h1>Adicionar Pessoa</h1>
+<div class="add-person-section">
+  <form [formGroup]="personForm" (ngSubmit)="functionAddPerson()">
+    <input formControlName="name" placeholder="Nome da pessoa" />
+    <input formControlName="email" placeholder="Email da pessoa" />
+    <input formControlName="age" type="number" placeholder="Idade" />
+    <input formControlName="birthDate" type="date" placeholder="Data de Nascimento" />
+
+    <button type="submit">Adicionar Pessoa</button>
+  </form>
+</div>
+
+<h1>Lista de Pessoas</h1>
+<div class="container">
+  <div *ngIf="!(pessoas$ | async); else showPessoas">
+    <p>Carregando dados...</p>
+  </div>
+
+  <ng-template #showPessoas>
+    <ul>
+      <li *ngFor="let pessoa of (pessoas$ | async)" class="pessoa-item">
+        <div class="pessoa-info">
+          <h2>{{ pessoa.name }}</h2>
+          <p>Idade: {{ pessoa.age }}</p>
+          <p>Data de Nascimento: {{ pessoa.birthDate }}</p>
+          <p>E-mail: {{ pessoa.email }}</p>
+          <div class="btn-class">
+            <button class="btn-atualizar" (click)="prepareUpdate(pessoa)">Atualizar</button>
+            <button class="btn-deletar" (click)="deletePerson(pessoa.id)">Deletar</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
+</div>
+
+<!-- Modal de Atualização -->
+<app-modal-update-person *ngIf="isModalVisible" [person]="selectedPerson" (close)="closeModal()"
+  (update)="handleUpdate($event)">
+</app-modal-update-person>

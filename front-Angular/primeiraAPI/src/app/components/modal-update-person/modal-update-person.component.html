@@ -1,0 +1,27 @@
+<div class="modal">
+  <div class="modal-content">
+    <h2>Atualizar Pessoa</h2>
+    <form (ngSubmit)="onSubmit()" class="formModal">
+      <label>
+        Nome:
+        <input [(ngModel)]="person.name" name="name" required />
+      </label>
+      <label>
+        E-mail:
+        <input [(ngModel)]="person.email" name="email" required />
+      </label>
+      <label>
+        Idade:
+        <input type="number" [(ngModel)]="person.age" name="age" required />
+      </label>
+      <label>
+        Data de Nascimento:
+        <input type="date" [(ngModel)]="person.birthDate" name="birthDate" required />
+      </label>
+      <div class="btn-class">
+        <button type="submit" class="btn-atualizar">Atualizar</button>
+        <button type="button" (click)="closeModal()" class="btn-deletar">Fechar</button>
+      </div>
+    </form>
+  </div>
+</div>
