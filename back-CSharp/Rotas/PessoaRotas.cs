@@ -9,37 +9,42 @@ public static class PessoaRotas
     {
         new Pessoa(
             id: Guid.NewGuid(),
-            nome: "Neymar",
+            name: "Neymar", 
             email: "neymar@example.com",
-            idade: 31,
-            dataNascimento: DateTime.Parse("05/02/1992") // Convertendo para DateTime
+            age: 31,
+            birthDate: DateTime.Parse("05/02/1992") 
         ),
         new Pessoa(
             id: Guid.NewGuid(),
-            nome: "Edilson",
+            name: "Edilson", 
             email: "edilson@example.com",
-            idade: 28,
-            dataNascimento: DateTime.Parse("10/03/1996") // Convertendo para DateTime
+            age: 28,
+            birthDate: DateTime.Parse("10/03/1996") 
         ),
         new Pessoa(
             id: Guid.NewGuid(),
-            nome: "CR7",
+            name: "CR7", 
             email: "cr7@example.com",
-            idade: 39,
-            dataNascimento: DateTime.Parse("05/02/1985") // Convertendo para DateTime
+            age: 39,
+            birthDate: DateTime.Parse("05/02/1985") 
         )
     };
 
     public static void MapPessoaRotas(this WebApplication app)
     {
-        // Rota para obter todas as pessoas
-        app.MapGet("/pessoas", handler: () => Pessoas);
+        // Route to get all people
+        app.MapGet("/pessoas", handler: () => Results.Ok(Pessoas));
 
-        // Rota para obter uma pessoa pelo nome
-        app.MapGet("/pessoas/{nome}", 
-            handler: (string nome) => Pessoas.Find(p => p.Nome.StartsWith(nome)));
+        // Route to get a person by name
+        app.MapGet("/pessoas/{name}", 
+            handler: (string name) => 
+            {
+                var foundPerson = Pessoas.Find(p => p.Name.StartsWith(name));
+                return foundPerson != null ? Results.Ok(foundPerson) : Results.NotFound();
+            });
 
-        // Rota para adicionar uma nova pessoa
+
+        // Route to add a new person
         app.MapPost("/pessoas/create", (HttpContext context, [FromBody] Pessoa pessoa) =>
         {
             pessoa.Id = Guid.NewGuid();
@@ -47,21 +52,22 @@ public static class PessoaRotas
             return Results.Ok(pessoa);
         });
 
-        // Rota para atualizar uma pessoa pelo ID
-        app.MapPut(pattern: "/pessoa/{id}", handler: (Guid id, Pessoa pessoa) =>
-        {
-            var encontrado = Pessoas.Find(x => x.Id == id);
+        // Route to update a person by ID
+        app.MapPut(pattern: "/pessoas/{id}", handler: (Guid id, Pessoa pessoa) =>
 
-            if (encontrado == null)
+        {
+            var found = Pessoas.Find(x => x.Id == id);
+
+            if (found == null)
                 return Results.NotFound();
 
-            // Atualiza as propriedades da pessoa encontrada
-            encontrado.Nome = pessoa.Nome;
-            encontrado.Email = pessoa.Email;
-            encontrado.Idade = pessoa.Idade;
-            encontrado.DataNascimento = pessoa.DataNascimento;
+            // Update properties of the found person
+            found.Name = pessoa.Name;
+            found.Email = pessoa.Email;
+            found.Age = pessoa.Age;
+            found.BirthDate = pessoa.BirthDate;
 
-            return Results.Ok(encontrado);
+            return Results.Ok(found);
         });
     }
 }

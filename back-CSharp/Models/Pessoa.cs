@@ -3,31 +3,32 @@ namespace ApiAngularCsharp.Models;
 public class Pessoa
 {
     private Guid id;
-    private int idade;
-    private string nome;
+    private int age; 
+    private string name; 
     private string email;
-    private DateTime dataNascimento;
+    private DateTime birthDate; 
+
     public Guid? Id
     {
         get => id;
         set => id = (Guid)value;
     }
-    
-    public int Idade 
+
+    public int Age 
     { 
-        get => idade; 
+        get => age; 
         set
         {
             if (value < 0)
                 throw new ArgumentException("Age cannot be negative.");
-            idade = value;
+            age = value;
         }
     }
 
-    public string Nome
+    public string Name 
     {
-        get => nome;
-        set => nome = value;
+        get => name;
+        set => name = value;
     }
 
     public string Email
@@ -36,19 +37,20 @@ public class Pessoa
         set => email = value;
     }
 
-    public DateTime DataNascimento
+    
+    public DateTime BirthDate 
     {
-        get => dataNascimento;
-        set => dataNascimento = value;
+        get => birthDate;
+        set => birthDate = value;
     }
 
-    public Pessoa(Guid id, string nome, string email, int idade, DateTime dataNascimento)
+    // Updated constructor parameter names
+    public Pessoa(Guid id, string name, string email, int age, DateTime birthDate) 
     {
         Id = id;
-        Nome = nome;
+        Name = name;
         Email = email;
-        Idade = idade;
-        DataNascimento = dataNascimento;
+        Age = age;
+        BirthDate = birthDate;
     }
 }
-
