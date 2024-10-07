@@ -26,10 +26,13 @@ export class ApiService {
   }
 
   updatePerson(id: any, person: any): Observable<Pessoa> {
-    return this.http.put<Pessoa>(`${this.baseUrl}/pessoas/${id}`, person);
+    return this.http.put<Pessoa>(
+      `${this.baseUrl}/pessoas/update/${id}`,
+      person
+    );
   }
 
   deletePerson(id: any): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/pessoas/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/pessoas/delete/${id}`);
   }
 }

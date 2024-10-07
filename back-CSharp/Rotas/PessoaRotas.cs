@@ -43,7 +43,6 @@ public static class PessoaRotas
                 return foundPerson != null ? Results.Ok(foundPerson) : Results.NotFound();
             });
 
-
         // Route to add a new person
         app.MapPost("/pessoas/create", (HttpContext context, [FromBody] Pessoa pessoa) =>
         {
@@ -53,8 +52,7 @@ public static class PessoaRotas
         });
 
         // Route to update a person by ID
-        app.MapPut(pattern: "/pessoas/{id}", handler: (Guid id, Pessoa pessoa) =>
-
+        app.MapPut("/pessoas/update/{id}", (Guid id, [FromBody] Pessoa pessoa) =>
         {
             var found = Pessoas.Find(x => x.Id == id);
 
@@ -68,6 +66,18 @@ public static class PessoaRotas
             found.BirthDate = pessoa.BirthDate;
 
             return Results.Ok(found);
+        });
+
+        // Route to delete a person by ID
+        app.MapDelete("/pessoas/delete/{id}", (Guid id) =>
+        {
+            var found = Pessoas.Find(x => x.Id == id);
+
+            if (found == null)
+                return Results.NotFound();
+
+            Pessoas.Remove(found);
+            return Results.NoContent();
         });
     }
 }
