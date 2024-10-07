@@ -23,6 +23,14 @@ $grey-color: #f0f0f0;
     font-size: 2rem;
   }
 
+  .add-person-section {
+    .add-person-section-form {
+      input {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
   section {
     margin-bottom: 20px;
     padding: 15px;

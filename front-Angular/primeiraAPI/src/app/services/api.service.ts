@@ -22,12 +22,12 @@ export class ApiService {
   }
 
   postPerson(person: any): Observable<Pessoa> {
-    return this.http.post<Pessoa>(`${this.baseUrl}/pessoas/create`, person);
+    return this.http.post<Pessoa>(`${this.baseUrl}/pessoas/create/`, person);
   }
 
   updatePerson(id: any, person: any): Observable<Pessoa> {
     return this.http.put<Pessoa>(
-      `${this.baseUrl}/pessoas/update/${id}`,
+      `${this.baseUrl}/pessoas/update/${id}/`,
       person
     );
   }

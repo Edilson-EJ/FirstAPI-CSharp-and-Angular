@@ -25,7 +25,7 @@ import { ModalUpdatePersonComponent } from '../../components/modal-update-person
     ModalUpdatePersonComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'], // Corrigido para styleUrls
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   @ViewChild('notificationPopup') notificationPopup!: NotificationComponent;
@@ -49,11 +49,10 @@ export class HomeComponent implements OnInit {
 
   // Form
   protected personForm = this.fb$.group({
-    id: [''],
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     age: [0, [Validators.required]],
-    birthDate: [new Date(), Validators.required],
+    birthDate: [new Date().toISOString().split('T')[0], Validators.required],
   });
 
   getPeople() {
@@ -94,6 +93,17 @@ export class HomeComponent implements OnInit {
   }
 
   functionAddPerson() {
+    if (this.personForm.invalid) {
+      this.notificationPopup.open(
+        'Preencha todos os campos obrigatórios!',
+        'Erro',
+        'error'
+      );
+      return;
+    }
+
+    console.log(this.personForm.value);
+
     this.apiService.postPerson(this.personForm.value).subscribe(
       (person) => {
         console.log('Pessoa adicionada:', person);

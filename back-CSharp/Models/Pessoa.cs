@@ -3,20 +3,22 @@ namespace ApiAngularCsharp.Models;
 public class Pessoa
 {
     private Guid id;
-    private int age; 
-    private string name; 
+    private int age;
+    private string name;
     private string email;
-    private DateTime birthDate; 
+    private DateTime birthDate;
 
+    // Propriedade Id
     public Guid? Id
     {
         get => id;
-        set => id = (Guid)value;
+        set => id = value ?? Guid.NewGuid(); // Se o valor for nulo, gera um novo Guid
     }
 
-    public int Age 
-    { 
-        get => age; 
+    // Propriedade Age
+    public int Age
+    {
+        get => age;
         set
         {
             if (value < 0)
@@ -25,27 +27,32 @@ public class Pessoa
         }
     }
 
-    public string Name 
+    // Propriedade Name
+    public string Name
     {
         get => name;
         set => name = value;
     }
 
+    // Propriedade Email
     public string Email
     {
         get => email;
         set => email = value;
     }
 
-    
-    public DateTime BirthDate 
+    // Propriedade BirthDate
+    public DateTime BirthDate
     {
         get => birthDate;
         set => birthDate = value;
     }
 
-    // Updated constructor parameter names
-    public Pessoa(Guid id, string name, string email, int age, DateTime birthDate) 
+    // Construtor padrão (necessário para a desserialização)
+    public Pessoa() { }
+
+    // Construtor parametrizado (com nomes que correspondem ao JSON)
+    public Pessoa(Guid id, string name, string email, int age, DateTime birthDate)
     {
         Id = id;
         Name = name;
