@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputFieldComponent } from '../../components/input-field/input-field.component';
-import { NotificationComponent } from '../../components/notification/notification.component'; // Importando o componente de notificação
+import { NotificationComponent } from '../../components/notification/notification.component';
 import { ModalUpdatePersonComponent } from '../../components/modal-update-person/modal-update-person.component';
 
 @Component({
@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
   protected personForm = this.fb$.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    age: [0, [Validators.required]],
-    birthDate: [new Date().toISOString().split('T')[0], Validators.required],
+    age: ['', [Validators.required, Validators.min(0)]],
+    birthDate: ['', Validators.required],
   });
 
   getPeople() {
@@ -187,6 +187,13 @@ export class HomeComponent implements OnInit {
         this.notificationPopup.open('Erro ao deletar pessoa!', 'Erro', 'error');
       }
     );
+  }
+
+  private formatDate(date: Date): string {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 
   ngOnInit(): void {

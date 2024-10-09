@@ -23,6 +23,10 @@ export class NotificationComponent {
     this.title = title;
     this.type = type;
     this.isVisible = true;
+
+    setTimeout(() => {
+      this.close();
+    }, 5000);
   }
 
   close() {

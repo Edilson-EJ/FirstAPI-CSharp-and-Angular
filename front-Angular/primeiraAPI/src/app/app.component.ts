@@ -6,6 +6,7 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { NotificationComponent } from './components/notification/notification.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,

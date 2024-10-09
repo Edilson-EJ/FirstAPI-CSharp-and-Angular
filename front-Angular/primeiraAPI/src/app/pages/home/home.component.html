@@ -7,8 +7,9 @@
     <form [formGroup]="personForm" (ngSubmit)="functionAddPerson()" class="add-person-section-form">
       <input formControlName="name" placeholder="Nome da pessoa" />
       <input formControlName="email" placeholder="Email da pessoa" />
-      <input formControlName="age" type="number" placeholder="Idade" />
-      <input formControlName="birthDate" type="date" placeholder="Data de Nascimento" />
+      <input formControlName="age" type="number" placeholder="Idade" max="150" min="0" />
+
+      <input formControlName="birthDate" type="date" placeholder="Data de Nascimento (dd/mm/aaaa)" mask="00/00/0000" />
       <button type="submit">Adicionar Pessoa</button>
     </form>
   </section>
@@ -17,7 +18,7 @@
   <section class="search-person-section">
     <h2>Buscar Pessoa</h2>
     <div class="search-input-container">
-      <app-input-field label="Buscar Pessoa" placeholder="Digite o ID ou nome da pessoa e pressione Enter" type="search"
+      <app-input-field placeholder="Digite o ID ou nome da pessoa e pressione Enter" type="search"
         [(value)]="valueForPerson" (keyup.enter)="getSpecificPerson()">
       </app-input-field>
       <button (click)="getSpecificPerson()">Buscar</button>
