@@ -65,3 +65,4 @@ C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debu
 C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.pdb
 C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ApiAngularCsharp.genruntimeconfig.cache
 C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\obj\Debug\net8.0\ref\ApiAngularCsharp.dll
+C:\Users\edils\Desktop\Edilson\PrimeiraAPI-CSharp-e-Angular\back-CSharp\bin\Debug\net8.0\Fixtures\pessoas.json

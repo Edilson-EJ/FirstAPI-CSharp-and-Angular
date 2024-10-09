@@ -1,3 +1,5 @@
+// Importar o namespace para trabalhar com JSON
+using System.Text.Json; 
 using ApiAngularCsharp.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,31 +7,35 @@ namespace ApiAngularCsharp.Rotas;
 
 public static class PessoaRotas
 {
-    // Lista estática de pessoas para simular um banco de dados
-    public static List<Pessoa> Pessoas = new()
+    // Lista de pessoas carregadas a partir do arquivo JSON
+    public static List<Pessoa> Pessoas = LoadPessoasFromJson();
+
+    // Método para carregar dados do arquivo JSON
+    private static List<Pessoa> LoadPessoasFromJson()
     {
-        new Pessoa(
-            id: Guid.NewGuid(),
-            name: "Neymar", 
-            email: "neymar@example.com",
-            age: 31,
-            birthDate: DateTime.Parse("05/02/1992")
-        ),
-        new Pessoa(
-            id: Guid.NewGuid(),
-            name: "Edilson", 
-            email: "edilson@example.com",
-            age: 28,
-            birthDate: DateTime.Parse("10/03/1996")
-        ),
-        new Pessoa(
-            id: Guid.NewGuid(),
-            name: "CR7", 
-            email: "cr7@example.com",
-            age: 39,
-            birthDate: DateTime.Parse("05/02/1985")
-        )
-    };
+        try
+        {
+            var path = Path.Combine(AppContext.BaseDirectory, "Fixtures", "pessoas.json");
+            Console.WriteLine($"Caminho do arquivo JSON: {path}"); // Log do caminho do arquivo
+
+            var jsonString = File.ReadAllText(path);
+            var pessoas = JsonSerializer.Deserialize<List<Pessoa>>(jsonString, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            }) ?? new List<Pessoa>();
+
+            Console.WriteLine($"Dados carregados: {JsonSerializer.Serialize(pessoas)}"); // Log dos dados carregados
+
+            return pessoas;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao carregar dados do JSON: {ex.Message}");
+            return new List<Pessoa>();
+        }
+    }
+
+
 
     // Mapeamento das rotas de Pessoa
     public static void MapPessoaRotas(this WebApplication app)
@@ -46,10 +52,12 @@ public static class PessoaRotas
 
         // Rota para adicionar uma nova pessoa
         app.MapPost("/pessoas/create", ([FromBody] Pessoa pessoa) =>
-        {
-            pessoa.Id = Guid.NewGuid(); // Gerar um novo ID
-            Pessoas.Add(pessoa); // Adicionar à lista
-            return Results.Created($"/pessoas/{pessoa.Id}", pessoa); // Retornar o recurso criado
+        {   
+            // Gerar um novo ID
+            pessoa.Id = Guid.NewGuid(); 
+            // Adicionar à lista
+            Pessoas.Add(pessoa); 
+            return Results.Created($"/pessoas/{pessoa.Id}", pessoa); 
         });
 
         // Rota para atualizar uma pessoa pelo ID
@@ -65,8 +73,9 @@ public static class PessoaRotas
             found.Email = pessoa.Email;
             found.Age = pessoa.Age;
             found.BirthDate = pessoa.BirthDate;
-
-            return Results.Ok(found); // Retornar a pessoa atualizada
+            
+            // Retornar a pessoa atualizada
+            return Results.Ok(found); 
         });
 
         // Rota para deletar uma pessoa pelo ID
@@ -76,9 +85,12 @@ public static class PessoaRotas
 
             if (found == null)
                 return Results.NotFound("Pessoa não encontrada.");
-
-            Pessoas.Remove(found); // Remover a pessoa da lista
-            return Results.NoContent(); // Retornar 204 No Content
+            
+            // Remover a pessoa da lista
+            Pessoas.Remove(found); 
+            
+            // Retornar 204 No Content
+            return Results.NoContent(); 
         });
     }
 }

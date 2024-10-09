@@ -1,0 +1,23 @@
+[
+  {
+    "id": "b84b9258-445c-4c4d-91b3-b57c78e8d83b", 
+    "name": "Neymar",
+    "email": "neymar@example.com",
+    "age": 31,
+    "birthDate": "1992-02-05"
+  },
+  {
+    "id": "d72b3b37-8b6d-4cc1-81f7-bd43e5e1a1c3",  
+    "name": "Edilson",
+    "email": "edilson@example.com",
+    "age": 28,
+    "birthDate": "1996-03-10"
+  },
+  {
+    "id": "cb35f961-f2f5-4e65-9c41-6a48b876b1a1",  
+    "name": "CR7",
+    "email": "cr7@example.com",
+    "age": 39,
+    "birthDate": "1985-02-05"
+  }
+]
