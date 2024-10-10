@@ -18,6 +18,7 @@ export class ApiService {
   }
 
   getUpSpecificPerson(person: string): Observable<Pessoa[]> {
+    console.log('pesquisa', person);
     return this.http.get<Pessoa[]>(`${this.baseUrl}/pessoas/${person}`);
   }
 

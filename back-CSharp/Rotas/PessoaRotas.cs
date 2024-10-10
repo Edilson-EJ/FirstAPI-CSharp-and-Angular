@@ -19,12 +19,25 @@ namespace ApiAngularCsharp.Rotas
             // Route to get a person by name (case-insensitive and exact search)
             app.MapGet("/pessoas/{name}", async (string name, AppDbContext db) =>
             {
-                var foundPersons = await db.Pessoas
-                    .Where(p => p.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
-                    .ToListAsync();
+                try
+                {
+                    var foundPersons = await db.Pessoas
+                        .Where(p => EF.Functions.Like(p.Name.ToLower(), name.ToLower() + "%"))
+                        .ToListAsync();
 
-                return foundPersons.Any() ? Results.Ok(foundPersons) : Results.NotFound("Nenhuma pessoa encontrada.");
+
+
+                    return foundPersons.Any() ? Results.Ok(foundPersons) : Results.NotFound("Nenhuma pessoa encontrada.");
+                }
+                catch (Exception ex)
+                {
+                    // Logar o erro
+                    Console.WriteLine($"Erro ao buscar pessoa: {ex.Message}"); // Utilize um logger em produção
+                    return Results.Problem("Ocorreu um erro ao buscar a pessoa.", statusCode: 500);
+                }
             });
+
+            
 
             // Route to add a new person
             app.MapPost("/pessoas/create", async ([FromBody] AddPessoaRequest request, AppDbContext db) =>
