@@ -2,6 +2,7 @@ using ApiAngularCsharp.Rotas;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using ApiAngularCsharp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<AppDbContext>();
 
 var app = builder.Build();
 

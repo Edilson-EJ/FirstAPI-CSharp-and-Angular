@@ -16,15 +16,14 @@ public static class PessoaRotas
         try
         {
             var path = Path.Combine(AppContext.BaseDirectory, "Fixtures", "pessoas.json");
-            Console.WriteLine($"Caminho do arquivo JSON: {path}"); // Log do caminho do arquivo
-
+            Console.WriteLine($"Caminho do arquivo JSON: {path}"); 
             var jsonString = File.ReadAllText(path);
             var pessoas = JsonSerializer.Deserialize<List<Pessoa>>(jsonString, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             }) ?? new List<Pessoa>();
 
-            Console.WriteLine($"Dados carregados: {JsonSerializer.Serialize(pessoas)}"); // Log dos dados carregados
+            Console.WriteLine($"Dados carregados: {JsonSerializer.Serialize(pessoas)}"); 
 
             return pessoas;
         }
