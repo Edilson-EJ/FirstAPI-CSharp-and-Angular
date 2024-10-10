@@ -1,12 +1,16 @@
+using ApiAngularCsharp.Data;
 using ApiAngularCsharp.Rotas;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using ApiAngularCsharp.Data;
+using Microsoft.EntityFrameworkCore; 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configure DbContext to use the connection string from appsettings.json
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
@@ -18,14 +22,13 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<AppDbContext>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    // Ignorar certificados autoassinados no desenvolvimento
+    // Ignore self-signed certificates in development
     ServicePointManager.ServerCertificateValidationCallback =
         delegate (object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
 
@@ -34,6 +37,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowSpecificOrigin"); 
+app.UseCors("AllowSpecificOrigin");
 app.MapPessoaRotas();
 app.Run();

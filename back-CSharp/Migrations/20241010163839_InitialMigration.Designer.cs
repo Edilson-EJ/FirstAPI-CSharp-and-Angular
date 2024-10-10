@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiAngularCsharp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241010125613_Initial")]
-    partial class Initial
+    [Migration("20241010163839_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
