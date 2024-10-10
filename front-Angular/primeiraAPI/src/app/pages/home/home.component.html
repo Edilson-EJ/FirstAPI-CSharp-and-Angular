@@ -5,11 +5,38 @@
   <section class="add-person-section">
     <h2>Adicionar Pessoa</h2>
     <form [formGroup]="personForm" (ngSubmit)="functionAddPerson()" class="add-person-section-form">
-      <input formControlName="name" placeholder="Nome da pessoa" />
-      <input formControlName="email" placeholder="Email da pessoa" />
-      <input formControlName="age" type="number" placeholder="Idade" max="150" min="0" />
+      <div class="add-person-section-form-div">
+        <input formControlName="name" placeholder="Nome da pessoa" />
+        <!-- Error message for the Name field -->
+        <p *ngIf="personForm.get('name')?.touched && personForm.get('name')?.invalid" class="error-message">
+          O campo nome é obrigatório.
+        </p>
+      </div>
 
-      <input formControlName="birthDate" type="date" placeholder="Data de Nascimento (dd/mm/aaaa)" mask="00/00/0000" />
+      <div class="add-person-section-form-div">
+        <input formControlName="email" placeholder="Email da pessoa" />
+        <!-- Error message for the Email field -->
+        <p *ngIf="personForm.get('email')?.touched && personForm.get('email')?.invalid" class="error-message">
+          O campo email é obrigatório.
+        </p>
+      </div>
+
+      <div class="add-person-section-form-div">
+        <input formControlName="age" type="number" placeholder="Idade" max="150" min="0" />
+        <!-- Error message for the Age field -->
+        <p *ngIf="personForm.get('age')?.touched && personForm.get('age')?.invalid" class="error-message">
+          O campo idade é obrigatório.
+        </p>
+      </div>
+
+      <div class="add-person-section-form-div">
+        <input formControlName="birthDate" type="date" placeholder="Data de Nascimento" />
+        <!-- Error message for the Date of Birth field -->
+        <p *ngIf="personForm.get('birthDate')?.touched && personForm.get('birthDate')?.invalid" class="error-message">
+          O campo data de nascimento é obrigatório.
+        </p>
+      </div>
+
       <button type="submit">Adicionar Pessoa</button>
     </form>
   </section>
@@ -18,26 +45,36 @@
   <section class="search-person-section">
     <h2>Buscar Pessoa</h2>
     <div class="search-input-container">
-      <app-input-field placeholder="Digite o ID ou nome da pessoa e pressione Enter" type="search"
-        [(value)]="valueForPerson" (keyup.enter)="getSpecificPerson()">
-      </app-input-field>
+      <app-input-field placeholder="Digite o nome da pessoa" type="search" [(value)]="valueForPerson"
+        (keyup.enter)="getSpecificPerson()"></app-input-field>
       <button (click)="getSpecificPerson()">Buscar</button>
     </div>
 
     <app-notification #notificationPopup></app-notification>
 
-    <div *ngIf="searchForPerson$ | async as person; else noPersonFound">
-      <h3>Resultado da Busca:</h3>
-      <div class="pessoa-info">
-        <h4>{{ person.name }}</h4>
-        <p>Id: {{ person.id }}</p>
+    <!-- Exibe o resultado da busca -->
+    <div *ngIf="searchForPerson$ | async as persons; else noPersonFound">
+      <h3 class="result-title">Resultado da Busca:</h3>
+      <div class="pessoa-card" *ngFor="let person of persons">
+        <div class="pessoa-avatar">
+          <img [src]="'https://avatars.dicebear.com/api/bottts/' + person.name + '.svg'" alt="Avatar"
+            class="avatar-img" />
+        </div>
+        <div class="pessoa-info">
+          <h4 class="pessoa-name">{{ person.name }}</h4>
+          <p class="pessoa-email">{{ person.email }}</p>
+        </div>
       </div>
     </div>
 
+
+
+
     <ng-template #noPersonFound>
-      <p>Nenhuma pessoa encontrada.</p>
+      <p *ngIf="searchAttempted && !searchForPerson$" class="no-person-message">Nenhuma pessoa encontrada.</p>
     </ng-template>
   </section>
+
 
 
   <!-- People List Section  -->

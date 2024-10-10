@@ -17,8 +17,8 @@ export class ApiService {
     return this.http.get<Pessoa[]>(`${this.baseUrl}/pessoas`);
   }
 
-  getUpSpecificPerson(person: any): Observable<Pessoa> {
-    return this.http.get<Pessoa>(`${this.baseUrl}/pessoas/${person}`);
+  getUpSpecificPerson(person: string): Observable<Pessoa[]> {
+    return this.http.get<Pessoa[]>(`${this.baseUrl}/pessoas/${person}`);
   }
 
   postPerson(person: any): Observable<Pessoa> {

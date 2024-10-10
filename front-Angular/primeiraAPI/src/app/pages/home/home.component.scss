@@ -17,9 +17,14 @@
 
   .add-person-section {
     .add-person-section-form {
-      input {
+      .add-person-section-form-div {
         margin-bottom: 10px;
       }
+    }
+    .error-message {
+      color: red;
+      font-size: 0.85rem;
+      margin: 0;
     }
   }
 
@@ -41,10 +46,17 @@
       color: $secondary-color;
     }
 
+    .search-person-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .search-input-container {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex;
       align-items: center;
+      gap: 10px;
       margin-bottom: 15px;
 
       button {
@@ -130,4 +142,83 @@
       }
     }
   }
+}
+
+/* Estilos para a seção de busca */
+.search-person-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.search-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.result-title {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.pessoa-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.pessoa-avatar {
+  margin-right: 20px;
+}
+
+.avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pessoa-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.pessoa-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.pessoa-email {
+  font-size: 1rem;
+  color: #666;
+}
+
+.no-person-message {
+  color: #ff4d4f;
+  font-weight: bold;
+  margin-top: 15px;
 }

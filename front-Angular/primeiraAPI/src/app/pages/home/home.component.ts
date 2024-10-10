@@ -37,21 +37,21 @@ export class HomeComponent implements OnInit {
   pessoas$?: Observable<Pessoa[]>;
 
   // Search Person
-  searchForPerson$?: Observable<Pessoa>;
+  searchForPerson$?: Observable<Pessoa[]>;
   valueForPerson = '';
-
-  // Add person
-  addPerson = '';
 
   // Modal
   isModalVisible: boolean = false;
   selectedPerson!: Pessoa;
 
+  // Variável de controle para busca
+  searchAttempted: boolean = false;
+
   // Form
   protected personForm = this.fb$.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    age: ['', [Validators.required, Validators.min(0)]],
+    age: ['', [Validators.required, Validators.min(0), Validators.max(150)]],
     birthDate: ['', Validators.required],
   });
 
@@ -60,21 +60,29 @@ export class HomeComponent implements OnInit {
   }
 
   getSpecificPerson() {
+    this.searchAttempted = true;
+
     if (this.valueForPerson) {
       this.searchForPerson$ = this.apiService.getUpSpecificPerson(
         this.valueForPerson
       );
       this.searchForPerson$.subscribe(
-        (person) => {
-          console.log(person);
-          this.notificationPopup.open(
-            'Pessoa encontrada!',
-            'Sucesso',
-            'success'
-          );
+        (persons: Pessoa[]) => {
+          if (persons.length > 0) {
+            this.notificationPopup.open(
+              'Pessoa encontrada!',
+              'Sucesso',
+              'success'
+            );
+          } else {
+            this.notificationPopup.open(
+              'Nenhuma pessoa encontrada!',
+              'Erro',
+              'error'
+            );
+          }
         },
         (error) => {
-          console.error(error);
           this.notificationPopup.open(
             'Nome incorreto digitado!',
             'Erro',
@@ -84,7 +92,7 @@ export class HomeComponent implements OnInit {
       );
     } else {
       this.notificationPopup.open(
-        'Por favor, insira um ID ou nome.',
+        'Por favor, insira um nome.',
         'Aviso',
         'warning'
       );
@@ -102,13 +110,9 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    console.log(this.personForm.value);
-
     this.apiService.postPerson(this.personForm.value).subscribe(
       (person) => {
-        console.log('Pessoa adicionada:', person);
         this.getPeople();
-        this.valueForPerson = '';
         this.notificationPopup.open(
           'Pessoa adicionada com sucesso!',
           'Sucesso',
@@ -116,7 +120,6 @@ export class HomeComponent implements OnInit {
         );
       },
       (error) => {
-        console.error('Erro ao adicionar pessoa:', error);
         this.notificationPopup.open(
           'Erro ao adicionar pessoa!',
           'Erro',
@@ -142,8 +145,7 @@ export class HomeComponent implements OnInit {
 
   updatePerson(updatedPerson: Pessoa) {
     this.apiService.updatePerson(updatedPerson.id, updatedPerson).subscribe(
-      (response) => {
-        console.log('Pessoa atualizada:', response);
+      () => {
         this.getPeople();
         this.notificationPopup.open(
           'Pessoa atualizada com sucesso!',
@@ -152,7 +154,6 @@ export class HomeComponent implements OnInit {
         );
       },
       (error) => {
-        console.error('Erro ao atualizar pessoa:', error);
         this.notificationPopup.open(
           'Erro ao atualizar pessoa!',
           'Erro',
@@ -174,7 +175,6 @@ export class HomeComponent implements OnInit {
 
     this.apiService.deletePerson(personId).subscribe(
       () => {
-        console.log('Pessoa deletada:', personId);
         this.getPeople();
         this.notificationPopup.open(
           'Pessoa deletada com sucesso!',
@@ -183,17 +183,9 @@ export class HomeComponent implements OnInit {
         );
       },
       (error) => {
-        console.error('Erro ao deletar pessoa:', error);
         this.notificationPopup.open('Erro ao deletar pessoa!', 'Erro', 'error');
       }
     );
-  }
-
-  private formatDate(date: Date): string {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
   }
 
   ngOnInit(): void {

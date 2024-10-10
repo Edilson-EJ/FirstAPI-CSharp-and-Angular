@@ -43,12 +43,17 @@ public static class PessoaRotas
         // Rota para obter todas as pessoas
         app.MapGet("/pessoas", () => Results.Ok(Pessoas));
 
-        // Rota para obter uma pessoa pelo nome (busca case-insensitive)
+        // Rota para obter uma pessoa pelo nome (busca case-insensitive e exata)
         app.MapGet("/pessoas/{name}", (string name) =>
         {
-            var foundPerson = Pessoas.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            return foundPerson != null ? Results.Ok(foundPerson) : Results.NotFound("Pessoa não encontrada.");
+            var foundPersons = Pessoas
+                .Where(p => p.Name.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+
+            return foundPersons.Any() ? Results.Ok(foundPersons) : Results.NotFound("Nenhuma pessoa encontrada.");
         });
+
+
 
         // Rota para adicionar uma nova pessoa
         app.MapPost("/pessoas/create", ([FromBody] Pessoa pessoa) =>
