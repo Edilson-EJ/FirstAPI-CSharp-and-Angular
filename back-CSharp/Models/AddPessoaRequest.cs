@@ -3,19 +3,19 @@ using System.ComponentModel.DataAnnotations;
 namespace ApiAngularCsharp.Models
 {
     public record AddPessoaRequest(
-        [Required(ErrorMessage = "O nome é obrigatório.")]
-        [StringLength(100, ErrorMessage = "O nome deve ter no máximo 100 caracteres.")]
+        [Required(ErrorMessage = "The name is required.")]
+        [StringLength(100, ErrorMessage = "The name must not exceed 100 characters.")]
         string Name,
 
-        [Required(ErrorMessage = "O email é obrigatório.")]
-        [EmailAddress(ErrorMessage = "O email deve ser válido.")]
+        [Required(ErrorMessage = "The email address is mandatory.")]
+        [EmailAddress(ErrorMessage = "The email address must be valid.")]
         string Email,
 
-        [Required(ErrorMessage = "A idade é obrigatória.")]
-        [Range(0, 150, ErrorMessage = "A idade deve estar entre 0 e 150.")]
+        [Required(ErrorMessage = "Age is mandatory.")]
+        [Range(0, 150, ErrorMessage = "The age must be between 0 and 150.")]
         int Age,
 
-        [Required(ErrorMessage = "A data de nascimento é obrigatória.")]
+        [Required(ErrorMessage = "The date of birth is mandatory.")]
         [DataType(DataType.Date)]
         DateTime BirthDate
     );
