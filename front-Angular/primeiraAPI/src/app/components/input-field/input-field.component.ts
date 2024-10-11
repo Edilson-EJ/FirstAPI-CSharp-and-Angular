@@ -10,23 +10,26 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class InputFieldComponent {
   @Input() label: string = '';
   @Input() placeholder: string = '';
-  @Input() type: string = 'text'; // Definir um tipo padrão
+  @Input() type: string = 'text';
   private _value: string = '';
 
   @Input()
   set value(value: string) {
     this._value = value;
-    this.valueChange.emit(this._value); // Emitir o valor quando for alterado
+    // Output the value when it changes
+    this.valueChange.emit(this._value);
   }
 
   get value(): string {
     return this._value;
   }
 
-  @Output() valueChange = new EventEmitter<string>(); // Adicionando o @Output
+  // Adding @Output
+  @Output() valueChange = new EventEmitter<string>();
 
   onInputChange(event: Event) {
     const input = event.target as HTMLInputElement;
-    this.value = input.value; // Isso acionará o setter e emitirá o valor
+    // This will trigger the setter and output the value
+    this.value = input.value;
   }
 }

@@ -57,10 +57,10 @@ export class HomeComponent implements OnInit {
       age: ['', [Validators.required, Validators.min(0), Validators.max(150)]],
       birthDate: ['', Validators.required],
     },
-    { validators: this.ageDateValidator.bind(this) } // Corrigido para referenciar o método de instância
+    { validators: this.ageDateValidator.bind(this) }
   );
 
-  // Função que calcula a idade com base na data de nascimento
+  // Function that calculates age based on date of birth
   private calculateAge(birthDate: Date): number {
     const today = new Date();
     const birth = new Date(birthDate);
@@ -77,29 +77,32 @@ export class HomeComponent implements OnInit {
     return age;
   }
 
-  // Alterando o validador para não ser estático e ter acesso ao método de instância
+  // Changing the validator so that it is not static and has access to the instance method
   ageDateValidator(control: AbstractControl): ValidationErrors | null {
     const age = control.get('age')?.value;
     const birthDate = control.get('birthDate')?.value;
 
     if (!age || !birthDate) {
-      return null; // Validação já está sendo feita pelos campos individuais
+      return null;
     }
 
     const calculatedAge = this.calculateAge(birthDate);
 
-    // Verifica se a idade calculada bate com a idade informada
+    // Checks if the calculated age matches the entered age
     return calculatedAge === age ? null : { ageDateMismatch: true };
   }
 
+  // get people back
   getPeople() {
     this.pessoas$ = this.apiService.getPeople();
   }
 
+  // clean search
   clearSearch() {
     this.searchForPerson$ = undefined;
   }
 
+  // get to pick up a specific person from the back
   getSpecificPerson() {
     this.searchAttempted = true;
 
@@ -141,8 +144,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // function for registering people
   functionAddPerson() {
-    // Verifica se o formulário está inválido, incluindo o erro de idade e data de nascimento
+    // Checks if the form is invalid, including the age and date of birth error
     if (this.personForm.invalid) {
       if (this.personForm.errors?.['ageDateMismatch']) {
         this.notificationPopup.open(
@@ -157,10 +161,11 @@ export class HomeComponent implements OnInit {
           'error'
         );
       }
-      return; // Impede a submissão se o formulário for inválido
+      // Prevents submission if the form is invalid
+      return;
     }
 
-    // Se o formulário for válido, a pessoa é adicionada
+    // If the form is valid, the person is added
     this.apiService.postPerson(this.personForm.value).subscribe(
       (person) => {
         this.getPeople();
@@ -191,10 +196,12 @@ export class HomeComponent implements OnInit {
     this.isModalVisible = false;
   }
 
+  // close modal
   closeModal() {
     this.isModalVisible = false;
   }
 
+  // registration update for the back
   updatePerson(updatedPerson: Pessoa) {
     this.apiService.updatePerson(updatedPerson.id, updatedPerson).subscribe(
       () => {
@@ -215,6 +222,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  // delete person from back
   deletePerson(personId: any) {
     if (!personId) {
       this.notificationPopup.open(
