@@ -1,193 +1,128 @@
 @use "index" as *;
 
 .main-container {
-  font-family: "Playwrite DE Grund", cursive;
+  max-width: 1200px;
+  margin: auto;
   padding: 20px;
-  background-color: $grey-color;
+  background-color: $background-color;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: auto;
+}
 
+.header {
+  text-align: center;
+  margin-bottom: 40px;
   .main-title {
-    text-align: center;
-    color: $primary-color;
-    margin-bottom: 30px;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: $blue-color;
   }
+  .sub-title {
+    font-size: 1.2rem;
+    color: $gray-color;
+  }
+}
 
-  .add-person-section {
-    .add-person-section-form {
-      .add-person-section-form-div {
-        margin-bottom: 10px;
-      }
+.add-person-section,
+.search-person-section,
+.people-list-section {
+  background-color: $background-color;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  .form-group {
+    margin-bottom: 15px;
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: $gray-color-v2;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $gray-color-v3;
+      border-radius: 4px;
+      font-size: 1rem;
     }
     .error-message {
-      color: red;
-      font-size: 0.85rem;
-      margin: 0;
-    }
-  }
-
-  section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: $white-color;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    h2 {
-      color: $primary-color;
-      margin-bottom: 15px;
-    }
-
-    h3,
-    h4,
-    p {
-      color: $secondary-color;
-    }
-
-    .search-person-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .search-input-container {
-      display: flex;
-      justify-content: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-
-      button {
-        background-color: $primary-color;
-        color: $white-color;
-        border: none;
-        border-radius: 4px;
-        padding: 10px 15px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
-
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
-      }
-    }
-
-    form {
-      input {
-        width: calc(100% - 150px);
-        padding: 10px;
-        border: 1px solid $secondary-color;
-        border-radius: 4px;
-        margin-right: 10px;
-
-        &:focus {
-          border-color: $primary-color;
-          outline: none;
-        }
-      }
-
-      button {
-        background-color: $primary-color;
-        color: $white-color;
-        border: none;
-        border-radius: 4px;
-        padding: 10px 15px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
-
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
-      }
-    }
-  }
-
-  .pessoa-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid $secondary-color;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-
-    .btn-class {
-      display: flex;
-      gap: 10px;
-
-      button {
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-
-        &.btn-atualizar {
-          background-color: $accent-color;
-          color: $white-color;
-
-          &:hover {
-            background-color: darken($accent-color, 10%);
-          }
-        }
-
-        &.btn-deletar {
-          background-color: $error-color;
-          color: $white-color;
-
-          &:hover {
-            background-color: darken($error-color, 10%);
-          }
-        }
-      }
+      color: $error-color;
+      font-size: 0.875rem;
     }
   }
 }
 
-/* Estilos para a seção de busca */
-.search-person-section {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-.search-input-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
+.btn-primary,
+.btn-search,
+.btn-clear,
+.btn-update,
+.btn-delete {
+  padding: 10px 15px;
   border: none;
-  color: white;
   border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #0056b3;
+.btn-group {
+  .btn-update {
+    margin-right: 10px;
+  }
 }
 
-.result-title {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  color: #333;
+.btn-primary {
+  background-color: $blue-color;
+  color: $white-color;
+  &:hover {
+    background-color: $blue-color-v2;
+  }
 }
 
-.pessoa-card {
+.btn-search {
+  background-color: $green-color;
+  color: $white-color;
+  &:hover {
+    background-color: $green-color-v2;
+  }
+}
+
+.btn-clear {
+  background-color: $warning-color;
+  color: white;
+  &:hover {
+    background-color: $warning-color-v2;
+  }
+}
+
+.btn-update {
+  background-color: $light-blue;
+  color: $white-color;
+  &:hover {
+    background-color: #138496;
+  }
+}
+
+.btn-delete {
+  background-color: $red-color;
+  color: $white-color;
+  &:hover {
+    background-color: $red-color-v2;
+  }
+}
+
+.pessoa-card,
+.pessoa-item {
   display: flex;
   align-items: center;
   padding: 15px;
   border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: $white-color;
   margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .pessoa-avatar {
@@ -202,23 +137,20 @@ button:hover {
 }
 
 .pessoa-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.pessoa-name {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.pessoa-email {
-  font-size: 1rem;
-  color: #666;
+  flex: 1;
+  h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $gray-color-v2;
+  }
+  p {
+    font-size: 1rem;
+    color: #666;
+  }
 }
 
 .no-person-message {
-  color: #ff4d4f;
+  color: #dc3545;
   font-weight: bold;
   margin-top: 15px;
 }

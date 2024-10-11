@@ -4,8 +4,10 @@ import { Pessoa } from '../../Models/pessoas';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import {
+  AbstractControl,
   FormsModule,
   NonNullableFormBuilder,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -48,15 +50,54 @@ export class HomeComponent implements OnInit {
   searchAttempted: boolean = false;
 
   // Form
-  protected personForm = this.fb$.group({
-    name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    age: ['', [Validators.required, Validators.min(0), Validators.max(150)]],
-    birthDate: ['', Validators.required],
-  });
+  protected personForm = this.fb$.group(
+    {
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      age: ['', [Validators.required, Validators.min(0), Validators.max(150)]],
+      birthDate: ['', Validators.required],
+    },
+    { validators: this.ageDateValidator.bind(this) } // Corrigido para referenciar o método de instância
+  );
+
+  // Função que calcula a idade com base na data de nascimento
+  private calculateAge(birthDate: Date): number {
+    const today = new Date();
+    const birth = new Date(birthDate);
+    let age = today.getFullYear() - birth.getFullYear();
+    const monthDiff = today.getMonth() - birth.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birth.getDate())
+    ) {
+      age--;
+    }
+
+    return age;
+  }
+
+  // Alterando o validador para não ser estático e ter acesso ao método de instância
+  ageDateValidator(control: AbstractControl): ValidationErrors | null {
+    const age = control.get('age')?.value;
+    const birthDate = control.get('birthDate')?.value;
+
+    if (!age || !birthDate) {
+      return null; // Validação já está sendo feita pelos campos individuais
+    }
+
+    const calculatedAge = this.calculateAge(birthDate);
+
+    // Verifica se a idade calculada bate com a idade informada
+    return calculatedAge === age ? null : { ageDateMismatch: true };
+  }
 
   getPeople() {
     this.pessoas$ = this.apiService.getPeople();
+  }
+
+  clearSearch() {
+    this.searchForPerson$ = undefined;
   }
 
   getSpecificPerson() {
@@ -101,18 +142,29 @@ export class HomeComponent implements OnInit {
   }
 
   functionAddPerson() {
+    // Verifica se o formulário está inválido, incluindo o erro de idade e data de nascimento
     if (this.personForm.invalid) {
-      this.notificationPopup.open(
-        'Preencha todos os campos obrigatórios!',
-        'Erro',
-        'error'
-      );
-      return;
+      if (this.personForm.errors?.['ageDateMismatch']) {
+        this.notificationPopup.open(
+          'A idade e a data de nascimento não correspondem!',
+          'Erro',
+          'error'
+        );
+      } else {
+        this.notificationPopup.open(
+          'Preencha todos os campos obrigatórios!',
+          'Erro',
+          'error'
+        );
+      }
+      return; // Impede a submissão se o formulário for inválido
     }
 
+    // Se o formulário for válido, a pessoa é adicionada
     this.apiService.postPerson(this.personForm.value).subscribe(
       (person) => {
         this.getPeople();
+        this.personForm.reset();
         this.notificationPopup.open(
           'Pessoa adicionada com sucesso!',
           'Sucesso',

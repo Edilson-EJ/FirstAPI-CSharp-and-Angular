@@ -31,8 +31,6 @@ namespace ApiAngularCsharp.Rotas
                 }
                 catch (Exception ex)
                 {
-                    // Logar o erro
-                    Console.WriteLine($"Erro ao buscar pessoa: {ex.Message}"); // Utilize um logger em produção
                     return Results.Problem("Ocorreu um erro ao buscar a pessoa.", statusCode: 500);
                 }
             });

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiAngularCsharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+919da90a0d5f4637428e44da53f4df9c33119b37")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd01d97a0cb6f48b394b70de2b1d17546db31ecb")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiAngularCsharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiAngularCsharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

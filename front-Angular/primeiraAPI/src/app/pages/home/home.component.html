@@ -1,43 +1,52 @@
 <div class="main-container">
-  <h1 class="main-title">Aplicação de Gestão de Contatos - C# e Angular</h1>
+  <header class="header">
+    <h1 class="main-title">Aplicação de Gestão de Contatos</h1>
+    <p class="sub-title">C# e Angular</p>
+  </header>
 
   <!-- Add Person Section-->
   <section class="add-person-section">
     <h2>Adicionar Pessoa</h2>
     <form [formGroup]="personForm" (ngSubmit)="functionAddPerson()" class="add-person-section-form">
-      <div class="add-person-section-form-div">
-        <input formControlName="name" placeholder="Nome da pessoa" />
-        <!-- Error message for the Name field -->
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input id="name" formControlName="name" placeholder="Nome da pessoa" />
         <p *ngIf="personForm.get('name')?.touched && personForm.get('name')?.invalid" class="error-message">
           O campo nome é obrigatório.
         </p>
       </div>
 
-      <div class="add-person-section-form-div">
-        <input formControlName="email" placeholder="Email da pessoa" />
-        <!-- Error message for the Email field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" placeholder="Email da pessoa" />
         <p *ngIf="personForm.get('email')?.touched && personForm.get('email')?.invalid" class="error-message">
           O campo email é obrigatório.
         </p>
       </div>
 
-      <div class="add-person-section-form-div">
-        <input formControlName="age" type="number" placeholder="Idade" max="150" min="0" />
-        <!-- Error message for the Age field -->
+      <div class="form-group">
+        <label for="age">Idade</label>
+        <input id="age" formControlName="age" type="number" placeholder="Idade" max="150" min="0" />
         <p *ngIf="personForm.get('age')?.touched && personForm.get('age')?.invalid" class="error-message">
           O campo idade é obrigatório.
         </p>
+
+        <div *ngIf="personForm.errors?.['ageDateMismatch']">
+          <p class="error-message">A idade e a data de nascimento não correspondem.</p>
+        </div>
+
+
       </div>
 
-      <div class="add-person-section-form-div">
-        <input formControlName="birthDate" type="date" placeholder="Data de Nascimento" />
-        <!-- Error message for the Date of Birth field -->
+      <div class="form-group">
+        <label for="birthDate">Data de Nascimento</label>
+        <input id="birthDate" formControlName="birthDate" type="date" placeholder="Data de Nascimento" />
         <p *ngIf="personForm.get('birthDate')?.touched && personForm.get('birthDate')?.invalid" class="error-message">
           O campo data de nascimento é obrigatório.
         </p>
       </div>
 
-      <button type="submit">Adicionar Pessoa</button>
+      <button type="submit" class="btn-primary">Adicionar Pessoa</button>
     </form>
   </section>
 
@@ -47,14 +56,15 @@
     <div class="search-input-container">
       <app-input-field placeholder="Digite o nome da pessoa" type="search" [(value)]="valueForPerson"
         (keyup.enter)="getSpecificPerson()"></app-input-field>
-      <button (click)="getSpecificPerson()">Buscar</button>
+      <button (click)="getSpecificPerson()" class="btn-search">Buscar</button>
     </div>
 
     <app-notification #notificationPopup></app-notification>
 
-    <!-- Exibe o resultado da busca -->
+    <!-- Displays the search result -->
     <div *ngIf="searchForPerson$ | async as persons; else noPersonFound">
       <h3 class="result-title">Resultado da Busca:</h3>
+      <button (click)="clearSearch()" class="btn-clear">Limpar Busca</button>
       <div class="pessoa-card" *ngFor="let person of persons">
         <div class="pessoa-avatar">
           <img [src]="'https://avatars.dicebear.com/api/bottts/' + person.name + '.svg'" alt="Avatar"
@@ -67,18 +77,13 @@
       </div>
     </div>
 
-
-
-
     <ng-template #noPersonFound>
       <p *ngIf="searchAttempted && !searchForPerson$" class="no-person-message">Nenhuma pessoa encontrada.</p>
     </ng-template>
   </section>
 
-
-
-  <!-- People List Section  -->
-  <section class="container">
+  <!-- People List Section -->
+  <section class="people-list-section">
     <h2>Lista de Pessoas</h2>
     <div *ngIf="!(pessoas$ | async); else showPessoas">
       <p>Carregando dados...</p>
@@ -92,9 +97,9 @@
             <p>Idade: {{ pessoa.age }}</p>
             <p>Data de Nascimento: {{ pessoa.birthDate | date: 'dd/MM/yyyy' }}</p>
             <p>E-mail: {{ pessoa.email }}</p>
-            <div class="btn-class">
-              <button class="btn-atualizar" (click)="prepareUpdate(pessoa)">Atualizar</button>
-              <button class="btn-deletar" (click)="deletePerson(pessoa.id)">Deletar</button>
+            <div class="btn-group">
+              <button class="btn-update" (click)="prepareUpdate(pessoa)">Atualizar</button>
+              <button class="btn-delete" (click)="deletePerson(pessoa.id)">Deletar</button>
             </div>
           </div>
         </li>
@@ -106,4 +111,5 @@
   <app-modal-update-person *ngIf="isModalVisible" [person]="selectedPerson" (close)="closeModal()"
     (update)="handleUpdate($event)">
   </app-modal-update-person>
+
 </div>
